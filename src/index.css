@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  text-decoration: none;
+  color: #212121;
+  font-size: 1.2rem;
+  background-color: #646464;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.link:hover { 
+  filter: brightness(80%);
+}
