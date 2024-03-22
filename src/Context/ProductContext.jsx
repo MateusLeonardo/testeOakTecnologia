@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const ProductContext = createContext();
 
@@ -9,7 +9,18 @@ export const useProductContext = () => {
 };
 
 export const ProductProvider = ({ children }) => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(() => {
+    const local = window.localStorage.getItem('produtos')
+    if(local) {
+      return JSON.parse(local)
+    } else {
+      return []
+    }});
+
+  useEffect(() => {
+    localStorage.setItem('produtos', JSON.stringify(products));
+  }, [products]);
+
 
   const addProduct = (newProduct) => setProducts([...products, newProduct]);
   const sortedProducts = () => [...products].sort((a, b) => a.value - b.value);
